@@ -1,6 +1,6 @@
 {
   "name": "wechat-app",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "wechat app boilerplate",
   "scripts": {
     "release-patch": "npm version patch && git push && git push --tags",
