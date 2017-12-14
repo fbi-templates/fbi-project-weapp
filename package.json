@@ -1,6 +1,6 @@
 {
   "name": "wechat-app",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "wechat app boilerplate",
   "main": "app.js",
   "keywords": [
