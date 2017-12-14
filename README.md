@@ -27,7 +27,7 @@ $ fbi init fbi-project-weapp new-project
 **other fbi order**
 
 - fbi ls
-- fbi [tark]
+- fbi [task]
 
 ## More
 
