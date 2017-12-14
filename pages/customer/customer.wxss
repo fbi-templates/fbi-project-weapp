@@ -1,0 +1,80 @@
+.top-nav{
+	margin-bottom:25rpx;
+	height:100rpx;
+}
+
+.top-nav .nav-item{
+	float:left;
+  width: 33.33%;
+	text-align:center;
+	height:100%;
+	position: relative;
+}
+
+.top-nav .nav-item.active text{
+  background: #1AAD19;
+}
+
+.top-nav .nav-item text{
+  margin-top: 20rpx;
+	display: inline-block;
+  padding: 15rpx 20rpx;
+	color: #fff;
+  background: #bbb;
+  border-radius: 10rpx;
+}
+
+.main-wrap .weui-cells{
+	font-size: 26rpx;
+}
+.main-wrap .weui-cells .weui-input{
+	height:3.08823529em;
+	min-height:3.08823529em;
+	line-height:3.08823529em;
+}
+.main-wrap .weui-cells input{
+	height: auto;
+	min-height: auto;
+}
+
+.weui-btn-section{
+	margin: 100rpx 30rpx 50rpx 30rpx;
+}
+
+
+.weui-table {
+  background: #fff;
+  font-size: 26rpx;
+}
+
+.weui-table-header {
+  padding: 8px 10px;
+  border-bottom: 1px solid #eee;
+  font-weight: bold;
+  color: #f30;
+}
+.weui-table{
+	border-top: 1px solid #ddd;
+}
+
+.weui-row {
+  display: table-row;
+  width: 100%;
+}
+
+.weui-row .weui-td {
+  border-right: 1px solid #eee;
+  display: table-cell;
+  border-bottom: 1px solid #eee;
+  text-indent: 15rpx;
+  padding: 15rpx 0;
+}
+
+.weui-row.thead {
+  background: #eee;
+  font-weight: bold;
+}
+
+.weui-row.thead .weui-td {
+  border-color: #ddd;
+}

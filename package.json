@@ -1,0 +1,37 @@
+{
+  "name": "wechat-app",
+  "version": "1.0.0",
+  "description": "wechat app boilerplate",
+  "main": "app.js",
+  "keywords": [
+    "wechat app",
+    "front-end",
+    "boilerplate",
+    "starter-kit",
+    "template",
+    "fbi-project",
+    "fbi"
+  ],
+  "author": "jiangzq",
+  "license": "MIT",
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fbi-templates/fbi-project-weapp.git"
+  },
+  "scripts": {
+    "release-patch": "npm version patch && git push && git push --tags",
+    "release-minor": "npm version minor && git push && git push --tags",
+    "release-major": "npm version major && git push && git push --tags"
+  },
+  "bugs": {
+    "url": "https://github.com/fbi-templates/fbi-project-weapp/issues"
+  },
+  "homepage": "https://github.com/fbi-templates/fbi-project-weapp#readme",
+  "fbi": {
+    "template": {
+      "name": "fbi-project-weapp",
+      "version": ""
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@import "../../component/message/message.wxss";
+.page-view,
+.pass-view {
+  margin-top: 30rpx;
+}
+
+.pass-view .weui-cell,
+.page-view .weui-cell {
+  font-size: 28rpx;
+}
+
+.page-view .weui-cells {
+  margin-top: 30rpx;
+}
+
+.rule {
+  font-size: 28rpx;
+}
+
+.weui-badge.warn {
+  background: #ff0;
+  color: #222;
+}

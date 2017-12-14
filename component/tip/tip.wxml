@@ -1,0 +1,9 @@
+<template name="tip">
+  <view class="tip-area" hidden="{{tip.visiable ? false : true}}">
+    <view class="tip">
+      <view class="tip-content">
+        <text class="content">{{tip.content}}</text>
+      </view>
+    </view>
+  </view>
+</template>

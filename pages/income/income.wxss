@@ -1,0 +1,65 @@
+@import "../../component/message/message.wxss";
+.weui-search-bar {
+  background: #eff2f5;
+}
+
+.weui-search-bar {
+  position: relative;
+  line-height: 60rpx;
+  display: block;
+  font-size: 28rpx;
+  position: relative;
+}
+
+.weui-search-bar picker {
+  position:absolute;
+  padding:16rpx 20rpx;
+  white-space:nowrap;
+  top:0;
+  left:95rpx;
+  width:calc(100% - 135rpx);
+  line-height:60rpx;
+}
+
+.weui-search-bar picker .picker{
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5rpx;
+  padding-left: 20rpx;
+  letter-spacing: 3rpx;
+}
+
+.weui-table {
+  background: #fff;
+  font-size: 26rpx;
+}
+
+.weui-table-header {
+  padding: 8px 10px;
+  border-bottom: 1px solid #eee;
+  font-weight: bold;
+  color: #f30;
+}
+
+
+.weui-row {
+  display: table-row;
+  width: 100%;
+}
+
+.weui-row .weui-td {
+  border-right: 1px solid #eee;
+  display: table-cell;
+  border-bottom: 1px solid #eee;
+  text-indent: 15rpx;
+  padding: 15rpx 0;
+}
+
+.weui-row.thead {
+  background: #eee;
+  font-weight: bold;
+}
+
+.weui-row.thead .weui-td {
+  border-color: #ddd;
+}

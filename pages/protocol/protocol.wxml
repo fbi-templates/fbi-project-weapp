@@ -1,0 +1,22 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-article">
+            <view class="weui-article__h1">用户使用条款</view>
+            <view class="weui-article__section">
+              <view class="weui-article__p">
+                  深圳市物链科技有限公司（以下简称“物链”）在此特别提醒您（用户）在注册成为本应的用户之前，请认真阅读本《用户协议》（以下简称“协议”），以确保您充分理解本协议中各条款。您的注册、登录、使用等行为将视为对本协议的接受，并同意接受本协议各项条款的约束。
+本协议可由物链随时更新，更新后的协议条款一旦公布即代替原来的协议条款，恕不再另行通知，用户可在本应用内查阅最新版协议条款。在物链修改协议条款后，如果用户不接受修改后的条款，请立即停止使用物链提供的服务，用户继续使用物链提供的服务将被视为接受修改后的协议。
+
+本应用为物流综合服务系统平台，用户可在此平台承接相关运输业务，应同意以下协议：
+1、用户需另与物链签订“营运协议”，用以规范管理和操作。
+2、用户需在本应用内提供真实有效的个人身份信息和有关证件，不得有任何造假行为。
+3、用户必须用合格的硬件设备配合本应用的使用，包括但不限于智能手机，平板电脑，车载定位终端等。
+              </view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-btn-section" wx:if="{{mode === 'edit'}}">
+      <button class="weui-btn" type="primary" bindtap="accept">同意</button>
+      <button class="weui-btn" type="warn" bindtap="refuse">拒绝</button>
+    </view>
+</view>
