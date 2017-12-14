@@ -24,7 +24,7 @@ $ cd path/to/workspace
 $ fbi init fbi-project-weapp new-project 
 ```
 
-**other fbi order**
+**other fbi commands**
 
 - fbi ls
 - fbi [task]
@@ -41,4 +41,4 @@ $ fbi init fbi-project-weapp new-project
 
 ## Changelog
 
-- **1.0.0** (2017.12.14)
+- **1.0.1** (2017.12.14)

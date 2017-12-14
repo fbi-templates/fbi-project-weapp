@@ -1,6 +1,6 @@
 {
   "name": "wechat-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "wechat app boilerplate",
   "main": "app.js",
   "keywords": [
@@ -19,11 +19,6 @@
     "type": "git",
     "url": "git+https://github.com/fbi-templates/fbi-project-weapp.git"
   },
-  "scripts": {
-    "release-patch": "npm version patch && git push && git push --tags",
-    "release-minor": "npm version minor && git push && git push --tags",
-    "release-major": "npm version major && git push && git push --tags"
-  },
   "bugs": {
     "url": "https://github.com/fbi-templates/fbi-project-weapp/issues"
   },
@@ -31,7 +26,7 @@
   "fbi": {
     "template": {
       "name": "fbi-project-weapp",
-      "version": ""
+      "version": "1.0.1"
     }
   }
 }
