@@ -30,8 +30,7 @@
   "homepage": "https://github.com/fbi-templates/fbi-project-weapp#readme",
   "fbi": {
     "template": {
-      "name": "fbi-project-weapp",
-      "version": "1.0.3"
+      "name": "fbi-project-weapp"
     }
   }
 }
