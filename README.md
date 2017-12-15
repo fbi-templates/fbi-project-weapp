@@ -57,7 +57,7 @@ $ git clone https://github.com/fbi-templates/fbi-project-weapp.git new-project
 
 **开发步骤**
 
-1. [申请帐号](https://mp.weixin.qq.com/wxopen/waregister?action=step1)，并设置小程序信息。(需要提供个人或企业信息)
+1. [申请帐号](https://mp.weixin.qq.com/wxopen/waregister?action=step1)，并设置小程序信息。(需要提供个人或企业信息)
 1. [下载并安装开发工具](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html)，选择自己操作系统对应的下载链接。
 1. 编译预览
 1. 版本发布
