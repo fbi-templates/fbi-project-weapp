@@ -37,7 +37,7 @@ $ git clone https://github.com/fbi-templates/fbi-project-weapp.git new-project
 1. 全局文件
 
 * `app.js` 小程序逻辑 （常用来缓存某些页面的数据，在页面调用使用getApp()获取实例）
-* `app.json` 小程序公共设置（pages属性：注册路由，小程序的首页为第一个注册的路由）[详细文档](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html)
+* `app.json` 小程序公共设置（pages属性：注册路由，小程序的首页为第一个注册的路由）[详细文档](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html)
 * `app.wxss` 小程序公共样式表
 
 2. 页面组成
