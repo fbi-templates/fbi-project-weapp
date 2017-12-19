@@ -1,6 +1,6 @@
-var config = require('./script/config')
-var fetch = require('./script/fetch');
-var util = require('./script/util')
+const config = require('./scripts/config')
+const fetch = require('./scripts/fetch');
+const util = require('./scripts/util')
 
 App({
   globalData: {
@@ -16,7 +16,7 @@ App({
   },
 
   getUserInfo: function(cb) {
-    var that = this
+    let that = this
     wx.login({
       success: function() {
         wx.getUserInfo({

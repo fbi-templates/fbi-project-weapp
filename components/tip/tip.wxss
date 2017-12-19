@@ -1,4 +1,4 @@
-@import "../../css/animation.wxss";
+@import "../../styles/animation.wxss";
 .tip-area {
   position: fixed;
   width: 100%;

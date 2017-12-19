@@ -1,4 +1,4 @@
-@import "../../component/message/message.wxss";
+@import "../../components/message/message.wxss";
 
 .page {
   margin-top: 120px;

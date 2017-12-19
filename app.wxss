@@ -1,6 +1,6 @@
-@import 'css/weui.wxss';
-@import "./component/message/message.wxss";
-@import "./component/tip/tip.wxss";
+@import 'styles/weui.wxss';
+@import "./components/message/message.wxss";
+@import "./components/tip/tip.wxss";
 
 page {
   overflow-x: hidden;

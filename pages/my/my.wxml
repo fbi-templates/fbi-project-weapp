@@ -28,5 +28,5 @@
     </block>
   </view>
 </view>
-<import src="../../component/message/message.wxml" />
+<import src="../../components/message/message.wxml" />
 <template is="message" data="{{message: message}}" />

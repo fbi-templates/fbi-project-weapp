@@ -1,4 +1,5 @@
-var app = getApp();
+const app = getApp();
+
 Page({
   data: {
     mode: 'edit'

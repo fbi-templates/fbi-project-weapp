@@ -1,7 +1,7 @@
-var fetch = require('../../script/fetch');
-var config = require('../../script/config');
-var message = require('../../component/message/message');
-var app = getApp();
+const fetch = require('../../scripts/fetch');
+const config = require('../../scripts/config');
+const message = require('../../components/message/message');
+const app = getApp();
 
 Page({
   data: {

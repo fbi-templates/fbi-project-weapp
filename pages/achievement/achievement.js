@@ -1,18 +1,8 @@
-var fetch = require('../../script/fetch');
-var config = require('../../script/config');
-var util = require('../../script/util')
-var app = getApp();
-/*{
-  date: '20171210',
-    FullName: '恰恰舞曲',
-      OrderNo: '215667',
-        Amount: '789.00'
-},{
-  date: '20171210',
-    FullName: '恰恰舞曲',
-      OrderNo: '215667',
-        Amount: '789.00'
-}*/
+const fetch = require('../../scripts/fetch');
+const config = require('../../scripts/config');
+const util = require('../../scripts/util')
+const app = getApp();
+
 Page({
   data: {
     date: '2017-10',
@@ -54,7 +44,7 @@ Page({
       fetching: true
     })
 
-    fetch.getEpss.call(this, config.apiList.getEpss, 'GET', params, json => {
+    fetch.getEpss.call(this, params, json => {
       if (json.result) {
         this.setData({
           list: json.data,

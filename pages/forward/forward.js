@@ -1,4 +1,6 @@
-var config = require('../../script/config');
+const config = require('../../scripts/config');
+
+const LOGIN_URL = '/pages/login/login'
 
 Page({
   data: {
@@ -15,13 +17,13 @@ Page({
           })
         } else {
           wx.redirectTo({
-            url: '/pages/login/login'
+            url: LOGIN_URL
           })
         }
       },
       fail: function(res) {
         wx.redirectTo({
-          url: '/pages/login/login'
+          url: LOGIN_URL
         })
       }
     })

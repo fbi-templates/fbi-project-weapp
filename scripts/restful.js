@@ -1,5 +1,5 @@
 const util = require('./util')
-const message = require('../component/message/message')
+const message = require('../components/message/message')
 
 const DURATION = 3000
 const LOGIN_REDIRECT = "/pages/login/login"
@@ -32,12 +32,12 @@ function getFetchOptions(url, method = 'GET', opts = { header: null, body: null 
     method: method,
     data: opts.body,
     header: header,
-    success: function (res) {
+    success: res => {
       // correct
       let CORRECT = 
         res.statusCode == 200 &&
         res.data &&
-        res.data.Code == "000000"
+        (res.data.Code == "000000" || !res.data.Code)
 
       let json = {
         result: false,
@@ -46,51 +46,57 @@ function getFetchOptions(url, method = 'GET', opts = { header: null, body: null 
       }
 
       if (CORRECT) {
-
         json.result = true
-        json.data = res.data.Data
+        json.data = res.data
         json.msg = '返回成功'
 
         cb(json)
       } else {
         cb(json)
-        API_ERROR_LIST.catchError(cb)
+        // 是否登录超时
+        let loginError = 
+          res.statusCode == 200 &&
+          res.data &&
+          res.data.Code == "000002"
+
+        if (loginError) {
+          API_ERROR_LIST.loginError.call(this, cb)
+        } else {
+          API_ERROR_LIST.catchError.call(this, cb)
+        }
       }
     },
-    fail: function (res) {
-      API_ERROR_LIST.throwError(cb)
+    fail: res => {
+      API_ERROR_LIST.throwError.call(this, cb)
     }
   });
 }
 
 
-const loginError = data => {
-  if (data && data.Code && (data.Code == "000002" || data.Code == "0002")) {
-    wx.removeStorage({
-      key: "token",
-      success: res => {
-        if (!wx.isForwarding) {
-          wx.isForwarding = true;
-          message.show.call(this, {
-            content: "登录已经失效",
-            icon: "null",
-            duration: DURATION
+function loginError(data) {
+  wx.removeStorage({
+    key: "token",
+    success: res => {
+      if (!wx.isForwarding) {
+        wx.isForwarding = true;
+        message.show.call(this, {
+          content: "登录已经失效",
+          icon: "null",
+          duration: DURATION
+        });
+        
+        setTimeout(() => {
+          wx.isForwarding = false;
+          wx.navigateTo({
+            url: LOGIN_REDIRECT
           });
-          // 值运行一个跳转存在
-
-          setTimeout(() => {
-            wx.isForwarding = false;
-            wx.navigateTo({
-              url: LOGIN_REDIRECT
-            });
-          }, DURATION);
-        }
+        }, DURATION);
       }
-    });
-  }
+    }
+  });
 }
 
-const catchError = cb => {
+function catchError(cb) {
   // 失败的回调
   typeof cb == "function" && cb({ result: false });
   message.show.call(this, {
@@ -100,7 +106,7 @@ const catchError = cb => {
   });
 }
 
-const throwError = cb => {
+function throwError(cb) {
   // 失败的回调
   typeof cb == "function" && cb({ result: false });
   message.show.call(this, {
@@ -116,7 +122,4 @@ const API_ERROR_LIST = {
   catchError,      // 有捕获的异常
 }
 
-export {
-  getFetchOptions,
-  API_ERROR_LIST
-}
+module.exports = getFetchOptions

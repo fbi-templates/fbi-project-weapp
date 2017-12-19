@@ -1,5 +1,5 @@
-var config = require('../../script/config');
-var app = getApp();
+const config = require('../../scripts/config');
+const app = getApp();
 
 const GRID_LIST = [
   [{

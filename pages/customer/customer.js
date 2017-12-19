@@ -1,7 +1,8 @@
-var fetch = require('../../script/fetch');
-var config = require('../../script/config');
-var message = require('../../component/message/message');
-var tip = require('../../component/tip/tip');
+const fetch = require('../../scripts/fetch');
+const config = require('../../scripts/config');
+const message = require('../../components/message/message');
+const tip = require('../../components/tip/tip');
+const app = getApp();
 
 Page({
   data: {
@@ -29,7 +30,7 @@ Page({
       return false
     } 
 
-    this.fetchList((data) => {  
+    this.fetchList(data => {  
       this.data.pageIndex++;
       this.data.pageTotal = data.PageCount
 
@@ -54,7 +55,6 @@ Page({
     })
 
     if(this.data.active > 0) {
-
       this.setData({
         initing: true
       })
@@ -85,9 +85,8 @@ Page({
       fetching: true
     })
 
-    fetch.getCustomer.call(this, config.apiList.getCustomer, 'GET', params, json => {
+    fetch.getCustomer.call(this, params, json => {
       if (json.result) {
-        console.log(json)
         // 如果存在 cb 意为添加
         if (cb && 'function' == typeof cb) {
           cb(json.data)
@@ -114,44 +113,56 @@ Page({
 
   // 添加备案信息
   addCustomer: function() {
-    let params = this.data.info
-
     tip.hide.call(this)
-
     this.setData({
       disabled: true
     })
+    // 异步添加客户
+    this.asyncAddCustomer()
+  },
 
-    fetch.hasSocialCreditCode.call(this, config.apiList.hasSocialCreditCode, 'GET', {
-      SocialCreditCode: this.data.info.SocialCreditCode
-    }, json => {
-      if (json.result) {
-        fetch.addCustomer.call(this, config.apiList.addCustomer, 'POST', params, json => {
-          if (json.result) {
-            message.show.call(this, {
-              content: '提交成功',
-              icon: 'success',
-              duration: 2000
-            })
-            
-            setTimeout(() => {
-              this.setData({
-                info: {}, // 清空当前的填写内容
-                active: 1
-              })
-              this.fetchList()
-            }, 1500)
-          }
+  // socail 校验
+  hasSocialCreditCode: function () {
+    return new Promise((resolve, reject) => {
+      fetch.hasSocialCreditCode.call(this, { SocialCreditCode: this.data.info.SocialCreditCode }, json => {
+        if (json.result) {
+          resolve()
+        } else {
           this.setData({
             disabled: false
           })
-        })
-      } else {
+          reject()
+        }
+      })
+    })
+  },
+
+  // customer
+  asyncAddCustomer: function () {
+    let params = this.data.info
+    // 等待校验成功
+    this.hasSocialCreditCode().then(() => {
+      // 添加客户
+      fetch.addCustomer.call(this, params, json => {
+        if (json.result) {
+          message.show.call(this, {
+            content: '提交成功',
+            icon: 'success',
+            duration: 2000
+          })
+          
+          setTimeout(() => {
+            this.setData({
+              info: {}, // 清空当前的填写内容
+              active: 1
+            })
+            this.fetchList()
+          }, 1500)
+        }
         this.setData({
           disabled: false
         })
-      }
-    })
+      })
+    }) 
   }
-
 })

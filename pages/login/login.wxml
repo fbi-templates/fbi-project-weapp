@@ -107,8 +107,8 @@
     <text style="margin-left: 3px;">物链拖车</text>
   </view>
 </view>
-<import src="../../component/message/message.wxml" />
+<import src="../../components/message/message.wxml" />
 <template is="message" data="{{message: message}}" />
 
-<import src="../../component/tip/tip.wxml" />
+<import src="../../components/tip/tip.wxml" />
 <template is="tip" data="{{tip: tip}}" />

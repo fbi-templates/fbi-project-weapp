@@ -1,225 +1,75 @@
-var config = require('./config.js')
-var message = require('../component/message/message')
-var util = require('./util')
-
-const ERROR_TIP = '网络异常'
-
-function error(that, data) {
-  // CODE == '0002'
-  if (data && data.Code && (data.Code == "000002" || data.Code == "0002")) {
-    wx.removeStorage({
-      key: "token",
-      success: function(res) {
-        if (!wx.isForwarding) {
-          wx.isForwarding = true;
-          message.show.call(that, {
-            content: "登录已经失效",
-            icon: "null",
-            duration: 3000
-          });
-          // 值运行一个跳转存在
-
-          setTimeout(() => {
-            wx.isForwarding = false;
-            wx.navigateTo({
-              url: "/pages/login/login"
-            });
-          }, 3000);
-        }
-      }
-    });
-  }
-}
-
-const api = {
-  success: function(res, that, cb) {
-    if (typeof cb == "function") {
-      // 正确 返回
-      if (
-        res.statusCode == 200 &&
-        res.data &&
-        (!res.data.Code || res.data.Code == "000000")
-      ) {
-        cb({ result: true, data: res.data });
-      } else {
-        cb({ result: false });
-        if (res.data) {
-          message.show.call(that, {
-            content: res.data.Message || res.data.Msg || ERROR_TIP,
-            icon: "offline",
-            duration: 3000
-          });
-          error(that, res.data || ERROR_TIP);
-        }
-      }
-    }
-  },
-  fail: function(that, cb) {
-    // 失败的回调
-    typeof cb == "function" && cb({ result: false });
-    message.show.call(that, {
-      content: ERROR_TIP,
-      icon: "offline",
-      duration: 3000
-    });
-  }
-};
+const getFetchOptions = require('./restful.js');
+const config = require('./config.js')
 
 // 登陆
-function login(url, method, params, cb) {
-  var that = this;
-  message.hide.call(that);
-  wx.request({
-    url: util.fetchOption(url, params),
-    method: method,
-    header: {
-      "Content-Type": "application/json"
-    },
-    data: null,
-    success: function(res) {
-      if (typeof cb == "function") {
-        // 正确 返回
-        if (res.statusCode == 200 && res.data.Code == "000000") {
-          cb({ result: true, data: res.data.Data });
-        } else {
-          cb({ result: false });
-          message.show.call(that, {
-            content: res.data.Message || res.data.Msg,
-            icon: "offline",
-            duration: 3000
-          });
-        }
-      }
-    },
-    fail: function() {
-      // 失败的回调
-      typeof cb == "function" && cb({ result: false });
-      message.show.call(that, {
-        content: ERROR_TIP,
-        icon: "offline",
-        duration: 3000
-      });
-    }
-  });
-}
-
-// 验证码
-function checkCode(url, method, params, cb) {
-  var that = this;
-  message.hide.call(that);
-  wx.request({
-    url: util.fetchOption(url, params),
-    method: method,
-    header: {
-      "Content-Type": "application/json",
-      "ctp-token-sign": wx.getStorageSync("token")
-    },
-    success: function(res) {
-      api.success(res, that, cb);
-    },
-    fail: function(res) {
-      api.fail(that, cb);
-    }
-  });
+function login(params, cb) {
+  const url = config.apiList.login
+  const method = 'POST'
+  const opts = {
+    header: params,
+    body: null
+  }
+  getFetchOptions.call(this, url, method, opts, cb, false)
 }
 
 // 注册
-function register(url, method, params, cb) {
-  var that = this;
-  message.hide.call(that);
-  wx.request({
-    url: url,
-    method: method,
-    data: params,
-    header: {
-      "Content-Type": "application/json"
-    },
-    success: function (res) {
-      api.success(res, that, cb);
-    },
-    fail: function (res) {
-      api.fail(that, cb);
-    }
-  });
+function register(params, cb) {
+  const url = config.apiList.register
+  const method = 'POST'
+  const opts = {
+    header: null,
+    body: params
+  }
+  getFetchOptions.call(this, url, method, opts, cb, false)
 }
+
+// 验证码
+function checkCode(params, cb) {
+  const url = config.apiList.checkCode
+  const opts = {
+    header: params,
+    body: null
+  }
+  getFetchOptions.call(this, url, null, opts, cb, true)
+}
+
 
 // 获取客户信息
-function getCustomer(url, method, params, cb) {
-  var that = this;
-  message.hide.call(that);
-  wx.request({
-    url: util.fetchOption(url, params),
-    method: method,
-    header: {
-      "Content-Type": "application/json",
-      "ctp-token-sign": wx.getStorageSync("token")
-    },
-    success: function (res) {
-      api.success(res, that, cb);
-    },
-    fail: function (res) {
-      api.fail(that, cb);
-    }
-  });
+function getCustomer(params, cb) {
+  const url = config.apiList.getCustomer
+  const opts = {
+    header: params,
+    body: null
+  }
+  getFetchOptions.call(this, url, null, opts, cb, true)
 }
 
-function getEpss(url, method, params, cb) {
-  var that = this;
-  message.hide.call(that);
-  wx.request({
-    url: util.fetchOption(url, params),
-    method: method,
-    header: {
-      "Content-Type": "application/json",
-      "ctp-token-sign": wx.getStorageSync("token")
-    },
-    success: function (res) {
-      api.success(res, that, cb);
-    },
-    fail: function (res) {
-      api.fail(that, cb);
-    }
-  });
+function getEpss(params, cb) {
+  const url = config.apiList.getEpss
+  const opts = {
+    header: params,
+    body: null
+  }
+  getFetchOptions.call(this, url, null, opts, cb, true)
 }
 
-function hasSocialCreditCode(url, method, params, cb) {
-  var that = this;
-  message.hide.call(that);
-  wx.request({
-    url: util.fetchOption(url, params),
-    method: method,
-    header: {
-      "Content-Type": "application/json",
-      "ctp-token-sign": wx.getStorageSync("token")
-    },
-    success: function (res) {
-      api.success(res, that, cb);
-    },
-    fail: function (res) {
-      api.fail(that, cb);
-    }
-  });
+function hasSocialCreditCode(params, cb) {
+  const url = config.apiList.hasSocialCreditCode
+  const opts = {
+    header: params,
+    body: null
+  }
+  getFetchOptions.call(this, url, null, opts, cb, true)
 }
 
-function addCustomer(url, method, params, cb) {
-  var that = this;
-  message.hide.call(that);
-  wx.request({
-    url: url,
-    method: method,
-    data: params,
-    header: {
-      "Content-Type": "application/json",
-      "ctp-token-sign": wx.getStorageSync("token")
-    },
-    success: function (res) {
-      console.log(res);
-      api.success(res, that, cb);
-    },
-    fail: function (res) {
-      api.fail(that, cb);
-    }
-  });
+function addCustomer(params, cb) {
+  const url = config.apiList.addCustomer
+  const method = 'POST'
+  const opts = {
+    header: null,
+    body: params
+  }
+  getFetchOptions.call(this, url, method, opts, cb, true)
 }
 
 module.exports = {

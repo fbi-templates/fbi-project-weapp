@@ -1,6 +1,6 @@
 module.exports = {
   show: function(cfg) {
-    var that = this
+    let that = this
     that.setData({
       tip: {
         content: cfg.content,
@@ -22,7 +22,7 @@ module.exports = {
     }
   },
   hide: function() {
-    var that = this
+    let that = this
     that.setData({
       tip: {
         visiable: false

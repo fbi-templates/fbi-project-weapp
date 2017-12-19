@@ -1,4 +1,4 @@
-@import "../../component/message/message.wxss";
+@import "../../components/message/message.wxss";
 .page-view,
 .pass-view {
   margin-top: 30rpx;

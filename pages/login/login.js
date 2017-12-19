@@ -1,11 +1,9 @@
-var fetch = require('../../script/fetch')
-var config = require('../../script/config')
-var message = require('../../component/message/message');
-var tip = require('../../component/tip/tip');
-var app = getApp();
+const fetch = require('../../scripts/fetch')
+const config = require('../../scripts/config')
+const message = require('../../components/message/message');
+const tip = require('../../components/tip/tip');
+const app = getApp();
 
-let FORWARD_URL = '/pages/recievedOrder/recievedOrder'
-let TIMER_COUNTDOWN = 60  // 验证码
 let timer = null
 
 Page({
@@ -31,7 +29,7 @@ Page({
       isReceiving: false, // 是否正在接受code
       canReceive: false, // 是否能接收
       disabled: true, // 不可提交
-      second: TIMER_COUNTDOWN
+      second: config.timer_cutdown
     },
   },
 
@@ -76,7 +74,7 @@ Page({
     })
 
     // 校验数据的完整度
-    fetch.login.call(this, config.apiList.login, 'POST', this.data.login.info, json => {
+    fetch.login.call(this, this.data.login.info, json => {
       // 如果成功
       if (json.result) {
         if (this.data.login.rememberPass) {
@@ -89,7 +87,7 @@ Page({
           wx.removeStorageSync('userInfo')
         }
         // 存储token
-        wx.setStorageSync("token", json.data.Token)
+        wx.setStorageSync("token", json.data.Data.Token)
 
         wx.reLaunch({
           url: config.forward_url
@@ -132,7 +130,7 @@ Page({
     tip.hide.call(this)
 
     // 校验数据的完整度
-    fetch.register.call(this, config.apiList.register, 'POST', this.data.register.info, json => {
+    fetch.register.call(this, this.data.register.info, json => {
       // 如果成功
       if (json.result) {
         message.show.call(this, {
@@ -266,7 +264,7 @@ Page({
     })
 
     register.isReceiving = true
-    register.second = TIMER_COUNTDOWN
+    register.second = config.timer_cutdown
     this.setData({
       register
     })
@@ -278,7 +276,7 @@ Page({
         register.isReceiving = true
       } else {
         register.isReceiving = false
-        register.second = TIMER_COUNTDOWN
+        register.second = config.timer_cutdown
         clearInterval(timer)
       }
       this.setData({

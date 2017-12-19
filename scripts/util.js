@@ -1,12 +1,12 @@
-var QQMapWX = require('../libs/qqmap-wx-jssdk.min.js');
-var config = require('./config');
+const QQMapWX = require('../lib/qqmap-wx-jssdk.min.js');
+const config = require('./config');
 
 Number.prototype.formatMoney = function(places, symbol, thousand, decimal) {
   places = !isNaN(places = Math.abs(places)) ? places : 2;
   symbol = symbol !== undefined ? symbol : "";
   thousand = thousand || ",";
   decimal = decimal || ".";
-  var number = this,
+  let number = this,
     negative = number < 0 ? "-" : "",
     i = parseInt(number = Math.abs(+number || 0).toFixed(places), 10) + "",
     j = (j = i.length) > 3 ? j % 3 : 0;
@@ -19,11 +19,11 @@ function formatTime(time) {
     return time
   }
 
-  var hour = parseInt(time / 3600)
+  let hour = parseInt(time / 3600)
   time = time % 3600
-  var minute = parseInt(time / 60)
+  let minute = parseInt(time / 60)
   time = time % 60
-  var second = time
+  let second = time
 
   return ([hour, minute, second]).map(function(n) {
     n = n.toString()
@@ -32,19 +32,19 @@ function formatTime(time) {
 }
 
 function getDate() {
-  var time = new Date()
-  var year = time.getFullYear()
-  var month = time.getMonth() + 1
+  let time = new Date()
+  let year = time.getFullYear()
+  let month = time.getMonth() + 1
   month = month < 10 ? '0' + month : month
-  var day = time.getDate()
+  let day = time.getDate()
   day = day < 10 ? '0' + day : day
   return [year, month, day].join('-')
 }
 
 function getYearAndMonth() {
-  var time = new Date()
-  var year = time.getFullYear()
-  var month = time.getMonth() + 1
+  let time = new Date()
+  let year = time.getFullYear()
+  let month = time.getMonth() + 1
   month = month < 10 ? '0' + month : month
   return [year, month].join('-')
 }
@@ -55,12 +55,12 @@ function getStartEnd(year, month) {
   month = month || new Date().getMonth() + 1
   month = month < 10 ? '0' + month : month
 
-  var firstdate = year + '-' + month + '-01';
-  var day = new Date(year, month, 0).getDate();
-  //var today = new Date().getDate();
+  let firstdate = year + '-' + month + '-01';
+  let day = new Date(year, month, 0).getDate();
+  //let today = new Date().getDate();
   day = day < 10 ? '0' + day : day
 
-  var lastdate = year + '-' + month + '-' + day; //获取当月最后一天日期
+  let lastdate = year + '-' + month + '-' + day; //获取当月最后一天日期
   //给文本控件赋值。同下
   return {
     start: firstdate,
@@ -69,12 +69,12 @@ function getStartEnd(year, month) {
 }
 
 function getTime() {
-  var time = new Date()
-  var hours = time.getHours()
+  let time = new Date()
+  let hours = time.getHours()
   hours = hours < 10 ? '0' + hours : hours
-  var minute = time.getMinutes()
+  let minute = time.getMinutes()
   minute = minute < 10 ? '0' + minute : minute
-  var second = time.getSeconds()
+  let second = time.getSeconds()
   second = second < 10 ? '0' + second : second
   return [hours, minute, second].join(':')
 }
@@ -85,9 +85,9 @@ function fetchOption(url, params) {
 }
 
 function urlencode(data) {
-  var _result = [];
-  for (var key in data) {
-    var value = data[key];
+  let _result = [];
+  for (let key in data) {
+    let value = data[key];
     if (value.constructor == Array) {
       value.forEach(function(_value) {
         _result.push(key + "=" + _value);
