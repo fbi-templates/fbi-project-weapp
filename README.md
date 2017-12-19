@@ -80,6 +80,9 @@ $ git clone https://github.com/fbi-templates/fbi-project-weapp.git new-project
 
 ## Changelog
 
+- **1.1.0** 优化项目 (2017.12.14)
+  - 减少了`pages`页面对请求的调用参数，不再需要传入 url + method
+  - 引入了 `Promise` 针对异步请求。（es7 async | await 小程序目前不支持）
 - **1.0.3** 调整项目目录结构 (2017.12.14)
 - **1.0.2** 添加tag (2017.12.14)
 
