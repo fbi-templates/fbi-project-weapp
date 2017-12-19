@@ -1,4 +1,3 @@
-@import "../../components/message/message.wxss";
 .weui-search-bar {
   background: #eff2f5;
 }

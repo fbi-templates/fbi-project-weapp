@@ -1,4 +1,3 @@
-@import "../../components/message/message.wxss";
 page {
   background: #eff2f5;
 }
