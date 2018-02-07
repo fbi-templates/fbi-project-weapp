@@ -1,5 +1,5 @@
 
-const URL = 'https://salesapi2.wlwulian.com' 
+const URL = 'xxxx' 
 
 module.exports = {
   baiduAK: 'Y1R5guY8Y2GNRdDpLz7SUeM3QgADAXec',
