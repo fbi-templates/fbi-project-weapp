@@ -1,20 +1,13 @@
-# fbi
-dst/
-dst-*/
-dist/
-dist-*/
 .DS_Store
-.deps
-
-# Logs
-logs
-*.log
+node_modules/
+dist/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
