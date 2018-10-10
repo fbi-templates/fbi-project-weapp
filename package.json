@@ -75,5 +75,20 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "fbi": {
+    "template": {
+      "name": "fbi-project-weapp"
+    },
+    "task" : {
+      "build": {
+        "alias": "b",
+        "desc": "building..."
+      },
+      "serve": {
+        "alias" : "s",
+        "desc": "Compile and start development server."
+      }
+    }
+  }
 }
