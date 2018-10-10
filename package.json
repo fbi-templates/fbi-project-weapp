@@ -1,6 +1,6 @@
 {
   "name": "fbi-project-weapp",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "小程序模板",
   "author": "SaoxnGao <saxongao@tencent.com>",
   "private": true,
@@ -80,13 +80,13 @@
     "template": {
       "name": "fbi-project-weapp"
     },
-    "task" : {
+    "task": {
       "build": {
         "alias": "b",
         "desc": "building..."
       },
       "serve": {
-        "alias" : "s",
+        "alias": "s",
         "desc": "Compile and start development server."
       }
     }
