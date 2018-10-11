@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.1.3"></a>
+## [2.1.3](https://github.com/fbi-templates/fbi-project-weapp/compare/v2.1.2...v2.1.3) (2018-10-11)
+
+
+### Bug Fixes
+
+* **mpvue:** 路径和loader问题 ([b50ca06](https://github.com/fbi-templates/fbi-project-weapp/commit/b50ca06))
+
+
+
 <a name="2.1.2"></a>
 ## [2.1.2](https://github.com/fbi-templates/fbi-project-weapp/compare/v2.1.1...v2.1.2) (2018-10-11)
 
