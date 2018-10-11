@@ -80,7 +80,7 @@
     "template": {
       "name": "fbi-project-weapp"
     },
-    "task": {
+    "tasks": {
       "build": {
         "alias": "b",
         "desc": "building..."
