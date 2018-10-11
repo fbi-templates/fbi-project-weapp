@@ -1,11 +1,11 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
-
+var {ROOT} = ctx.options.webpack
 module.exports = {
   build: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, '../dist/index.html'),
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    index: path.resolve(ROOT, './dist/index.html'),
+    assetsRoot: path.resolve(ROOT, './dist'),
     assetsSubDirectory: '',
     assetsPublicPath: '/',
     productionSourceMap: false,

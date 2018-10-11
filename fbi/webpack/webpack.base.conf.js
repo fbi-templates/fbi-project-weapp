@@ -7,9 +7,9 @@ var MpvuePlugin = require('webpack-mpvue-asset-plugin')
 var glob = require('glob')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
 var relative = require('relative')
-
+var {ROOT} = ctx.options.webpack
 function resolve (dir) {
-  return path.join(__dirname, '..', dir)
+  return path.join(ROOT, dir)
 }
 
 function getEntry (rootSrc) {
@@ -22,7 +22,7 @@ function getEntry (rootSrc) {
    return map;
 }
 
-const appEntry = { app: resolve('./src/main.js') }
+const appEntry = { app: ctx.options.paths.main }
 const pagesEntry = getEntry(resolve('./src'), 'pages/**/main.js')
 const entry = Object.assign({}, appEntry, pagesEntry)
 
@@ -47,7 +47,14 @@ module.exports = {
     },
     symlinks: false,
     aliasFields: ['mpvue', 'weapp', 'browser'],
-    mainFields: ['browser', 'module', 'main']
+    mainFields: ['browser', 'module', 'main'],
+    modules: ctx.nodeModulesPaths.concat([
+      path.resolve(__dirname, '..', 'src')
+    ]),
+    
+  },
+  resolveLoader: {
+    modules: ctx.nodeModulesPaths
   },
   module: {
     rules: [
@@ -114,7 +121,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../static'),
+        from: path.resolve(__dirname, '../../static'),
         to: path.resolve(__dirname, '../dist/static'),
         ignore: ['.*']
       }

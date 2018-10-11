@@ -5,6 +5,7 @@ const targets = {
 function resolve (dir) {
   return path.join(process.cwd(), dir)
 }
+//ctx.options
 module.exports = {
   server: {
     root: 'dist',
@@ -56,6 +57,9 @@ module.exports = {
     precss: {}
   },
   paths : {
-    main: 'src/main.js',
+    main: resolve('src/main.js'),
+  },
+  webpack : {
+    ROOT : process.cwd()
   }
 }

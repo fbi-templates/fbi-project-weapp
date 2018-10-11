@@ -1,17 +1,18 @@
-require('./config/check-versions')()
+require('./webpack/check-versions')()
 
-var config = require('../config')
+var path = require('path')
+console.log('-------ctx: ', ctx)
+var config = require('./config')
 if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 }
 
 // var opn = require('opn')
-var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
 var proxyMiddleware = require('http-proxy-middleware')
 var portfinder = require('portfinder')
-var webpackConfig = require('./config/webpack.dev.conf')
+var webpackConfig = require('./webpack/webpack.dev.conf')
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
@@ -62,7 +63,7 @@ app.use(require('connect-history-api-fallback')())
 
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
-app.use(staticPath, express.static('./static'))
+app.use(staticPath, express.static('../static'))
 
 // var uri = 'http://localhost:' + port
 
