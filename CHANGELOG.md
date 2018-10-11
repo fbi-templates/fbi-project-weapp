@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.1.4"></a>
+## [2.1.4](https://github.com/fbi-templates/fbi-project-weapp/compare/v2.1.3...v2.1.4) (2018-10-11)
+
+
+### Bug Fixes
+
+* **mpvue:** 删除多余的输出 ([6130098](https://github.com/fbi-templates/fbi-project-weapp/commit/6130098))
+
+
+
 <a name="2.1.3"></a>
 ## [2.1.3](https://github.com/fbi-templates/fbi-project-weapp/compare/v2.1.2...v2.1.3) (2018-10-11)
 
