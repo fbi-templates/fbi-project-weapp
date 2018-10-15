@@ -9,7 +9,9 @@ var CopyWebpackPlugin = require('copy-webpack-plugin')
 var relative = require('relative')
 var {ROOT} = ctx.options.webpack
 function resolve (dir) {
-  return path.join(ROOT, dir)
+  var realPath= path.join(ROOT, dir)
+  console.log('----realPath', realPath)
+  return realPath
 }
 
 function getEntry (rootSrc) {
@@ -49,7 +51,7 @@ module.exports = {
     aliasFields: ['mpvue', 'weapp', 'browser'],
     mainFields: ['browser', 'module', 'main'],
     modules: ctx.nodeModulesPaths.concat([
-      path.resolve(__dirname, '..', 'src')
+      path.resolve('src')
     ]),
     
   },
@@ -121,8 +123,8 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../../static'),
-        to: path.resolve(__dirname, '../dist/static'),
+        from: resolve('static'),
+        to: resolve('dist/static'),
         ignore: ['.*']
       }
     ])
