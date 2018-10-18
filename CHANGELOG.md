@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.1.6"></a>
+## [2.1.6](https://github.com/fbi-templates/fbi-project-weapp/compare/v2.1.5...v2.1.6) (2018-10-18)
+
+
+### Bug Fixes
+
+* **eslint:** 移除了eslint模块以及相关引用、依赖 ([4764536](https://github.com/fbi-templates/fbi-project-weapp/commit/4764536))
+
+
+
 <a name="2.1.5"></a>
 ## [2.1.5](https://github.com/fbi-templates/fbi-project-weapp/compare/v2.1.4...v2.1.5) (2018-10-15)
 
