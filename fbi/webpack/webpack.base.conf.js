@@ -7,21 +7,20 @@ var MpvuePlugin = require('webpack-mpvue-asset-plugin')
 var glob = require('glob')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
 var relative = require('relative')
-var {ROOT} = ctx.options.webpack
-function resolve (dir) {
-  var realPath= path.join(ROOT, dir)
+var { ROOT } = ctx.options.webpack
+function resolve(dir) {
+  var realPath = path.join(ROOT, dir)
   console.log('----realPath', realPath)
   return realPath
 }
 
-function getEntry (rootSrc) {
-  var map = {};
-  glob.sync(rootSrc + '/pages/**/main.js')
-  .forEach(file => {
-    var key = relative(rootSrc, file).replace('.js', '');
-    map[key] = file;
+function getEntry(rootSrc) {
+  var map = {}
+  glob.sync(rootSrc + '/pages/**/main.js').forEach(file => {
+    var key = relative(rootSrc, file).replace('.js', '')
+    map[key] = file
   })
-   return map;
+  return map
 }
 
 const appEntry = { app: ctx.options.paths.main }
@@ -37,38 +36,33 @@ module.exports = {
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
+    publicPath:
+      process.env.NODE_ENV === 'production'
+        ? config.build.assetsPublicPath
+        : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      'vue': 'mpvue',
+      vue: 'mpvue',
       '@': resolve('src')
     },
     symlinks: false,
     aliasFields: ['mpvue', 'weapp', 'browser'],
     mainFields: ['browser', 'module', 'main'],
-    modules: ctx.nodeModulesPaths.concat([
-      path.resolve('src')
-    ]),
-    
+    modules: ctx.nodeModulesPaths.concat([path.resolve('src')])
   },
   resolveLoader: {
     modules: ctx.nodeModulesPaths
   },
   module: {
     rules: [
-      {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: [resolve('src'), resolve('test')],
-        options: {
-          formatter: require('eslint-friendly-formatter')
-        }
-      },
+      // {
+      //   test: /\.(js|vue)$/,
+      //   loader: 'eslint-loader',
+      //   enforce: 'pre',
+      //   include: [resolve('src'), resolve('test')]
+      // },
       {
         test: /\.vue$/,
         loader: 'mpvue-loader',
@@ -84,7 +78,7 @@ module.exports = {
             options: {
               checkMPEntry: true
             }
-          },
+          }
         ]
       },
       {
@@ -115,12 +109,17 @@ module.exports = {
   },
   plugins: [
     new MpvuePlugin(),
-    new CopyWebpackPlugin([{
-      from: '**/*.json',
-      to: ''
-    }], {
-      context: 'src/'
-    }),
+    new CopyWebpackPlugin(
+      [
+        {
+          from: '**/*.json',
+          to: ''
+        }
+      ],
+      {
+        context: 'src/'
+      }
+    ),
     new CopyWebpackPlugin([
       {
         from: resolve('static'),

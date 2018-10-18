@@ -1,0 +1,62 @@
+{
+  // common
+  "files.autoSave": "onFocusChange",
+  "explorer.confirmDragAndDrop": false,
+  "window.zoomLevel": 0,
+  "files.associations": {
+    "*.wpy": "vue",
+    "*.css": "postcss"
+  },
+
+  // editor
+  "editor.tabSize": 2,
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.fontLigatures": true,
+
+  // emmit
+  "emmet.includeLanguages": {
+    "vue-html": "html",
+    "javascript": "javascriptreact"
+  },
+
+  // vetur
+  "vetur.format.styleInitialIndent": true,
+  "vetur.format.scriptInitialIndent": true,
+  "vetur.format.defaultFormatter.html": "prettier",
+  "vetur.format.defaultFormatter.ts": "vscode-typescript",
+
+  // javascript
+  "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  // prettier
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.proseWrap": true,
+
+  // prettier conflicts with beautify
+  "beautify.ignore": [
+    "**/*.js",
+    "**/*.jsx"
+  ],
+
+  // gitlens
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": false,
+    "suppressCommitNotFoundWarning": false,
+    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressGitVersionWarning": false,
+    "suppressLineUncommittedWarning": false,
+    "suppressNoRepositoryWarning": false,
+    "suppressResultsExplorerNotice": false,
+    "suppressShowKeyBindingsNotice": true,
+    "suppressUpdateNotice": false,
+    "suppressWelcomeNotice": true
+  },
+  "gitlens.keymap": "none",
+  "gitlens.historyExplorer.enabled": true
+}
