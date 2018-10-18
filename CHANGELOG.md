@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.1.7"></a>
+## [2.1.7](https://github.com/fbi-templates/fbi-project-weapp/compare/v2.1.6...v2.1.7) (2018-10-18)
+
+
+### Bug Fixes
+
+* **mpvue:** postcss的配置问题 ([f7e7306](https://github.com/fbi-templates/fbi-project-weapp/commit/f7e7306))
+
+
+
 <a name="2.1.6"></a>
 ## [2.1.6](https://github.com/fbi-templates/fbi-project-weapp/compare/v2.1.5...v2.1.6) (2018-10-18)
 
