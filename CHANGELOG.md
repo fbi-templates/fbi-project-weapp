@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/fbi-templates/fbi-project-weapp/compare/v2.1.7...v2.2.0) (2018-10-22)
+
+
+### Features
+
+* **style:** 加入weui-wxss 库 ([43355ec](https://github.com/fbi-templates/fbi-project-weapp/commit/43355ec))
+
+
+
 <a name="2.1.7"></a>
 ## [2.1.7](https://github.com/fbi-templates/fbi-project-weapp/compare/v2.1.6...v2.1.7) (2018-10-18)
 
