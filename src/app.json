@@ -1,8 +1,10 @@
 {
   "pages": [
+    "pages/example/main",
     "pages/index/main",
-    "pages/logs/main",
-    "pages/counter/main"
+    "pages/counter/main",
+    "pages/counter/main",
+    "pages/logs/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
