@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "mpvue": "^1.0.11",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "weui-wxss": "^1.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
